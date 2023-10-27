@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Pulami</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div id="header">
+            <img src="logo.jpg" alt="logo">
+        
+        <h1>Mr Pulami</h1>
+    </div>
+    <div id="navbar">
+        <a href="https://www.youtube.com/@MrPulami99Vlog">Subscribe</a>
+        <a href="videos">Videos</a>
+        <a href="https://www.youtube.com/@MrPulami99Vlog/playlists">playlist</a>
+        <a href="#about">about</a>
+    </div>
+
+    <main>
+        <div id="counter">
+            <h2 > <span> Live Subscriber <p id="subscriberCount"> </p>
+                <span>live View Count <p id="videoCount"></p></span>
+                </span>
+            <span>YouTube Video Views <p id="viewCount"></p></span>
+            </h2>
+        </div>
+        <section id="videos">
+           
+        <h2>latest videos</h2>
+            <div class="video-container">
+                <div class="video">
+                    <iframe  width="560" height="315" src="https://www.youtube.com/embed/RgM3VfCmQaI?si=Algln6-at04alcxm"  frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ogKn-bPXcYE?si=JayFXO1HRcA_TgTk" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/G3ypUjqdyRw?si=dWCyZgbkMPOe80YO" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <div id="baout">
+            <div id="about-content">
+                <p>
+                    Hi Everyone I am Mr pulami 🇮🇳 From Assam India 🇮🇳 
+                    This is my Second Chennal 
+                    My First Chennal @Mrpulami totally Frizz So I request Plz Subscribe to My New Chennal and Support me plz 🙏🙏🙏 
+                    Thank you for visiting 🥰🥰</p>
+            </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Mr Pulami YouTube Channel</p>
+    </footer>
+
+    <!-- <div id="container">
+        <h2>YouTube Subscribers</h2>
+        <div id="subscriberCount"></div>
+
+        <h2>YouTube Video Views</h2>
+        <div id="viewCount"></div>
+
+        <h2>YouTube Video Count</h2>
+        <div id="videoCount"></div>
+    </div> -->
+
+    <script>
+        const APIKey = 'AIzaSyBba2O9bBB16gOfzAdSuFF4b5WVYLlSlZ8';
+        const Userid = 'UC5ZMtuQ2__864tFNYdeMPOg';
+        const subscriberCount = document.getElementById('subscriberCount');
+        const viewCount = document.getElementById('viewCount');
+        const videoCount = document.getElementById('videoCount');
+
+        let getdata = () => {
+            fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${Userid}&key=${APIKey}`)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                subscriberCount.innerHTML = data["items"][0].statistics.subscriberCount;
+                viewCount.innerHTML = data["items"][0].statistics.viewCount;
+                videoCount.innerHTML = data["items"][0].statistics.videoCount;
+            });
+        }
+
+        getdata();
+    </script>
+</body>
+</html>
